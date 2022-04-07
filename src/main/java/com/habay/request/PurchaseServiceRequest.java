@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(value = "course-service" // name of course service application
-,path= "/api/purchase" // prepath for service service
-,url ="${purchase.service.url}",configuration = FeignConfiguration.class)
+,path= "/api/purchase", // prepath for service service
+//,url ="${purchase.service.url}",commented out cos weare using eureka discovery
+configuration = FeignConfiguration.class)
 public interface PurchaseServiceRequest {
 @PostMapping
 	Object savePurchase(@RequestBody Object requestBody);
-@GetMapping("userId")
+@GetMapping("{userId}")
 List<Object> getAllPurchasesOfUser(@PathVariable("userId")Long userId);
 }

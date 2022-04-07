@@ -15,27 +15,29 @@ import org.springframework.web.bind.annotation.RestController;
 import com.habay.request.CourseServiceRequest;
 
 @RestController
-@RequestMapping("gateway/course")
-public class CourseController {
+@RequestMapping("gateway/course")//pre-path
+public class CourseController
+{
+    @Autowired
+    private CourseServiceRequest courseServiceRequest;
 
-	@Autowired
-	private CourseServiceRequest courseServiceRequest;
-	
-	@PostMapping
-	public ResponseEntity<?> saveCourse(@RequestBody Object course){
-		return new ResponseEntity<>
-		(courseServiceRequest.saveCourse(course),HttpStatus.CREATED);
-	}
-	
-	@DeleteMapping("courseId") //gateway/course/{courseId}
-	public ResponseEntity<?> deleteCourse(@PathVariable Long courseId){
-		courseServiceRequest.deleteCourse(courseId);
-		 return new ResponseEntity<>(HttpStatus.OK);
-	}
-	
-	@GetMapping
-	public ResponseEntity<?> getAllCourses(){
-		return ResponseEntity.ok(courseServiceRequest.getAllCourses());
-		
-	}
+    @PostMapping //gateway/course
+    public ResponseEntity<?> saveCourse(@RequestBody Object course)
+    {
+        return new ResponseEntity<>(courseServiceRequest.saveCourse(course), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("{courseId}")//gateway/course/{courseId}
+    public ResponseEntity<?> deleteCourse(@PathVariable Long courseId)
+    {
+        courseServiceRequest.deleteCourse(courseId);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping//gateway/course
+    public ResponseEntity<?> getAllCourses()
+    {
+        return ResponseEntity.ok(courseServiceRequest.getAllCourses());
+    }
 }

@@ -22,7 +22,7 @@ public class PurchaseController {
 	private PurchaseServiceRequest purchaseServiceRequest;
 	
 	@PostMapping
-	public ResponseEntity<?> saveCourse(@RequestBody Object purchase){
+	public ResponseEntity<?> savePurchase(@RequestBody Object purchase){
 		return new ResponseEntity<>
 		(purchaseServiceRequest.savePurchase(purchase),HttpStatus.CREATED);
 	}
@@ -30,7 +30,7 @@ public class PurchaseController {
 
 	
 	@GetMapping
-	public ResponseEntity<?> getAllCourses(@AuthenticationPrincipal UserPrincipal userPrincipal){
+	public ResponseEntity<?> getAllPurchasesOfAuthorizedUser(@AuthenticationPrincipal UserPrincipal userPrincipal){
 		return ResponseEntity.ok( purchaseServiceRequest.getAllPurchasesOfUser(userPrincipal.getId()));
 		
 	}

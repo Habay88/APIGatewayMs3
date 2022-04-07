@@ -22,7 +22,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userservice.findByUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException
-						("User not founf with username: " + username));
+						("User not found with username: " + username));
 		
 		Set<GrantedAuthority> authorities = Set.of(SecurityUtils.convertToAuthority
 				(user.getRole().name()));
