@@ -28,25 +28,50 @@ const handleChange =(e)=>{
         };
     }));
 }
-const handleRegister =()=>{
-    setSubmitted(true);
-    //validation
-    if(!user.username || !user.password || !user.name){
-        return;
-    }
-    setLoading(true);
-    AuthenticationService.register(user).then(_ =>{
-       navigate('/login');
-        }
-    }).catch(error =>{
-        console.log(error);
-        if(error?.response?.status === 409){
-            setErrorMessage('username or password is not valid');
-        } else{
-            setErrorMessage('unexpected error occured.');
-        }
-    })
+const handleRegister = (e) => {
+
+    e.preventDefault();
+
+  setSubmitted(true);
+
+  //validation
+  if (!user.username || !user.password || !user.name) {
+      return;
+  }
+
+  setLoading(true);
+
+  AuthenticationService.register(user).then(_ => {
+      navigate('/login');
+  }).catch(error => {
+      console.log(error);
+      if (error?.response?.status === 409) {
+          setErrorMessage('username or password is not valid.');
+      } else {
+          setErrorMessage('Unexpected error occurred.');
+      }
+      setLoading(false);
+  });
 };
+// const handleRegister =()=>{
+//     setSubmitted(true);
+//     //validation
+//     if(!user.username || !user.password || !user.name){
+//         return;
+//     }
+//     setLoading(true);
+//     AuthenticationService.register(user).then(_ =>{
+//        navigate('/login');
+//         }
+//     }).catch(error =>{
+//         console.log(error);
+//         if(error?.response?.status === 409){
+//             setErrorMessage('username or password is not valid');
+//         } else{
+//             setErrorMessage('unexpected error occured.');
+//         }
+//     })
+// };
     return (
         <p>Register Page</p>
     )
