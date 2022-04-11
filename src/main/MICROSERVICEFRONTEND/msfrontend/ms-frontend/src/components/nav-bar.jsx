@@ -1,4 +1,5 @@
 import { BsFillAlarmFill } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 const NavBar = ()=>{
     return(
 <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -9,26 +10,26 @@ React
 </a>
 <div className="navbar-nav ms-auto">
 <li className="nav-item">
-    <a href="" className="nav-link">
+    <NavLink to="/admin" className="nav-link">
      Admin
-    </a>
+    </NavLink>
 </li>
 <li className="nav-item">
-    <a href="" className="nav-link">
+    <NavLink to="/home" className="nav-link">
      Home
-    </a>
+    </NavLink>
 </li>
 </div>
 <div className="navbar-nav ms-auto">
 <li className="nav-item">
-    <a href="" className="nav-link">
+    <NavLink to="/register" className="nav-link">
         Sign Up
-    </a>
+    </NavLink>
 </li>
 <li className="nav-item">
-    <a href="" className="nav-link">
+    <NavLink to="/login" className="nav-link">
         Sign In
-    </a>
+    </NavLink>
 </li>
 </div>
 </nav>

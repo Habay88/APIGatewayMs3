@@ -22,6 +22,7 @@ function App() {
 <Route path="/admin" element={<AdminPage/>}/>
 <Route path="/404" element={<NotFoundPage/>}/>
 <Route path="/401" element={<UnauthorizedPage/>}/> 
+ <Route path="*" element={<NotFoundPage/>}/> 
   </Routes>
 
 </div>
